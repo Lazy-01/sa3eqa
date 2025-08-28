@@ -47,62 +47,31 @@
       cursor: none;
     }
     
-    /* navbar */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      border-bottom: 2px solid var(--glass-border);
-      z-index: 1000;
-      padding: 15px 0;
-    }
-    
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-    
-    .navbar a {
-      color: var(--text-primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    
-    .navbar a:hover {
-      color: var(--neon-blue);
-    }
-    
     /* مؤشر الماوس المتطور */
     .cursor-glow {
       position: fixed;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
       background: radial-gradient(circle, var(--neon-blue) 0%, var(--neon-pink) 30%, transparent 70%);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      transition: all 0.1s ease;
-      opacity: 0.8;
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 0.9;
       mix-blend-mode: screen;
       filter: blur(1px);
     }
 
     .cursor-trail {
       position: fixed;
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: var(--neon-green);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9998;
-      opacity: 0.5;
-      transition: all 0.2s ease;
+      opacity: 0.6;
+      transition: all 0.3s ease;
     }
     
     /* خلفية متحركة متقدمة */
@@ -200,7 +169,7 @@
     .particle {
       position: absolute;
       border-radius: 50%;
-      animation: particleFloat 15s ease-in-out infinite;
+      animation: particleFloat 12s ease-in-out infinite;
       opacity: 0.6;
       filter: blur(1px);
     }
@@ -235,18 +204,6 @@
       overflow: hidden;
     }
     
-    .header-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.3;
-      z-index: -1;
-      filter: blur(5px);
-    }
-
     .header-glow {
       position: absolute;
       top: 50%;
@@ -568,7 +525,6 @@
       cursor: pointer;
       z-index: 2;
       box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
-      animation: pulse 2s infinite;
     }
     
     .btn-link::before {
@@ -899,12 +855,6 @@
       color: var(--text-accent);
       line-height: 1.8;
       font-size: 1.1rem;
-    }
-
-    .review-image {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
     }
 
     .no-reviews {
@@ -1323,14 +1273,6 @@
       .orb {
         display: none;
       }
-
-      .particles, .floating-orbs { display: none; }
-      .animated-bg { animation-duration: 50s; }
-      .game-canvas { height: 300px; }
-      .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-      }
     }
     
     @media (max-width: 480px) {
@@ -1386,113 +1328,9 @@
       backface-visibility: hidden;
       perspective: 1000px;
     }
-
-    /* قسم اللعبة الجديد */
-    .game-section { padding: 80px 0; text-align: center; }
-    .game-canvas { 
-      width: 80%; max-width: 800px; height: 400px; margin: 0 auto; 
-      background: rgba(0,0,0,0.5); border-radius: 20px; border: 2px solid var(--neon-blue); 
-      position: relative; overflow: hidden; 
-    }
-    .game-score { font-size: 2rem; color: var(--neon-green); margin-top: 20px; }
-    
-    /* قسم الألغاز */
-    .riddle-container {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      background: var(--glass-bg);
-      border-radius: 20px;
-      border: 2px solid var(--glass-border);
-    }
-    
-    .riddle-text {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    
-    .riddle-input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--neon-blue);
-      background: transparent;
-      color: var(--text-primary);
-    }
-    
-    .riddle-btn {
-      padding: 10px 20px;
-      background: var(--primary-gradient);
-      border: none;
-      border-radius: 10px;
-      color: white;
-      cursor: pointer;
-    }
-    
-    .riddle-feedback {
-      margin-top: 10px;
-      font-size: 1.1rem;
-    }
-
-    /* قسم الموسيقى */
-    .music-section {
-      padding: 80px 0;
-      text-align: center;
-    }
-    
-    .youtube-embed {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* تأثير pulse للأزرار */
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-
-    /* موسيقى خلفية */
-    .music-control { position: fixed; bottom: 20px; right: 20px; z-index: 9999; }
-    .music-btn { background: var(--neon-purple); color: white; padding: 10px; border-radius: 50%; cursor: pointer; }
-
-    /* تأثيرات إضافية */
-    @keyframes slideInRight {
-      0% { transform: translateX(100%); opacity: 0; }
-      100% { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes slideOutRight {
-      0% { transform: translateX(0); opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
-    }
-    
-    @keyframes rippleEffect {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(4); opacity: 0; }
-    }
-    
-    @keyframes rippleExpand {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(3); opacity: 0; }
-    }
-    
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
-    
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#home">الرئيسية</a></li>
-      <li><a href="#reviews">التقييمات</a></li>
-      <li><a href="#games">الألعاب</a></li>
-      <li><a href="#music">الموسيقى</a></li>
-    </ul>
-  </nav>
-
   <div class="cursor-glow"></div>
   <div class="cursor-trail"></div>
   <div class="animated-bg"></div>
@@ -1505,12 +1343,8 @@
   <div class="particles"></div>
 
   <div class="container">
-    <header class="header" id="home">
+    <header class="header">
       <div class="header-glow"></div>
-      <video class="header-video" autoplay loop muted playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-neon-sign-of-a-hamburger-33333-small.mp4" type="video/mp4">
-        <!-- استبدل برابط فيديو حقيقي قصير، مثل هذا من Mixkit لثيم cyberpunk -->
-      </video>
       <div class="logo-section">
         <div class="logo-rings">
           <div class="ring ring-1"></div>
@@ -1555,23 +1389,8 @@
         </div>
       </section>
 
-      <!-- قسم جديد: التحدي لجعلها غير مملة -->
-      <section class="game-section scroll-reveal" id="games">
-        <h2 class="section-title">الألعاب</h2>
-        <p class="section-subtitle">استمتع بألعاب بسيطة وممتعة!</p>
-        <h3>لعبة الثعبان</h3>
-        <canvas class="game-canvas" id="snakeCanvas" width="400" height="400"></canvas>
-        <h3>ألغاز</h3>
-        <div class="riddle-container">
-          <p class="riddle-text" id="riddleText"></p>
-          <input class="riddle-input" id="riddleInput" placeholder="اكتب إجابتك هنا">
-          <button class="riddle-btn" onclick="checkRiddle()">تحقق</button>
-          <p class="riddle-feedback" id="riddleFeedback"></p>
-        </div>
-      </section>
-
       <!-- التقييمات -->
-      <section class="reviews-section scroll-reveal" id="reviews">
+      <section class="reviews-section scroll-reveal">
         <div class="container">
           <h2 class="section-title">آراء أعضائنا</h2>
           <p class="section-subtitle">تعرف على تجارب الأعضاء مع سيرفراتنا</p>
@@ -1609,15 +1428,6 @@
           </div>
         </div>
       </section>
-
-      <!-- قسم الموسيقى -->
-      <section class="music-section scroll-reveal" id="music">
-        <h2 class="section-title">الموسيقى</h2>
-        <p class="section-subtitle">استمتع بموسيقى cyberpunk!</p>
-        <div class="youtube-embed">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/6z3MXY8liXY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-      </section>
     </main>
 
     <footer class="footer">
@@ -1649,7 +1459,6 @@
             placeholder="نحن نقدر رأيك كثيراً... شاركنا تجربتك مع السيرفر"
             maxlength="500">
           </textarea>
-          <input type="file" id="review-image" accept="image/*">
           <button class="submit-review-btn" onclick="submitReview()">
             <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
             إرسال التقييم
@@ -1657,14 +1466,6 @@
         </div>
       </div>
     </div>
-  </div>
-
-  <!-- موسيقى خلفية -->
-  <audio id="bgMusic" loop>
-    <source src="https://audio.jukehost.co.uk/TpE4kXVd0ZBo9pW8qSO1x1u9m4oJ3F4p" type="audio/mp3"> <!-- مثال على رابط موسيقى cyberpunk مجانية -->
-  </audio>
-  <div class="music-control">
-    <button class="music-btn" onclick="toggleMusic()"><i class="fas fa-play"></i></button>
   </div>
 
   <script>
@@ -1717,10 +1518,10 @@
     }
     animateTrail();
     
-    // إنشاء الجسيمات المتحركة المحسنة (تقليل العدد لتحسين الأداء)
+    // إنشاء الجسيمات المتحركة المحسنة
     function createParticles() {
       const particlesContainer = document.querySelector('.particles');
-      const particleCount = window.innerWidth > 768 ? 30 : 15;
+      const particleCount = window.innerWidth > 768 ? 60 : 30;
       
       for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -1733,6 +1534,7 @@
         particle.style.animationDelay = Math.random() * 12 + 's';
         particle.style.animationDuration = (Math.random() * 8 + 12) + 's';
         
+        // تنويع الألوان
         const colors = ['var(--neon-blue)', 'var(--neon-pink)', 'var(--neon-purple)', 'var(--neon-green)', 'var(--neon-orange)'];
         particle.style.background = colors[Math.floor(Math.random() * colors.length)];
         particle.style.boxShadow = `0 0 ${size * 2}px ${colors[Math.floor(Math.random() * colors.length)]}`;
@@ -1768,15 +1570,16 @@
       modal.classList.remove('active');
       document.body.style.overflow = 'auto';
       document.getElementById('review-text').value = '';
-      document.getElementById('review-image').value = '';
       currentServer = '';
     }
 
     // الانضمام لسيرفر ديسكورد
     function joinDiscordServer() {
       if (currentServer && serversData[currentServer]) {
+        // فتح رابط ديسكورد
         window.open(serversData[currentServer].inviteLink, '_blank');
         
+        // تأثيرات بصرية محسنة
         const btn = document.getElementById('join-server-btn');
         const originalHTML = btn.innerHTML;
         const originalStyle = btn.style.background;
@@ -1786,6 +1589,7 @@
         btn.style.transform = 'scale(1.05)';
         btn.style.boxShadow = '0 20px 50px rgba(0, 255, 128, 0.5)';
         
+        // إضافة تأثير الاهتزاز
         btn.style.animation = 'shake 0.5s ease-in-out';
         
         setTimeout(() => {
@@ -1798,10 +1602,9 @@
       }
     }
 
-    // إرسال تقييم محسن مع صورة
+    // إرسال تقييم محسن
     async function submitReview() {
       const reviewText = document.getElementById('review-text').value.trim();
-      const reviewImage = document.getElementById('review-image').files[0];
       
       if (!reviewText) {
         showNotification('يرجى كتابة تقييمك أولاً', 'warning');
@@ -1811,31 +1614,16 @@
       if (!currentServer) return;
 
       const serverInfo = serversData[currentServer];
-      let imageUrl = null;
-
-      if (reviewImage) {
-        const { data, error } = await supabase.storage
-          .from('reviews-images') // افترض bucket اسمه reviews-images
-          .upload(`review_${Date.now()}.jpg`, reviewImage);
-        
-        if (error) {
-          console.error('Error uploading image:', error);
-          showNotification('حدث خطأ في رفع الصورة', 'error');
-          return;
-        }
-        
-        imageUrl = `${SUPABASE_URL}/storage/v1/object/public/reviews-images/${data.path}`;
-      }
       
       try {
+        // إرسال التقييم إلى Supabase
         const { data, error } = await supabase
           .from('reviews')
           .insert([
             { 
               server: serverInfo.title,
               text: reviewText,
-              server_type: currentServer,
-              image_url: imageUrl
+              server_type: currentServer
             }
           ]);
           
@@ -1845,19 +1633,20 @@
           return;
         }
         
+        // إضافة التقييم للبداية
         const newReview = {
           server: serverInfo.title,
           text: reviewText,
-          date: new Date().toISOString().split('T')[0],
-          image_url: imageUrl
+          date: new Date().toISOString().split('T')[0]
         };
         
         reviews.unshift(newReview);
 
+        // تحديث عرض التقييمات
         displayReviews();
 
+        // إفراغ النص وإظهار رسالة نجاح
         document.getElementById('review-text').value = '';
-        document.getElementById('review-image').value = '';
         
         const btn = document.querySelector('.submit-review-btn');
         const originalHTML = btn.innerHTML;
@@ -1873,8 +1662,10 @@
           btn.disabled = false;
         }, 3000);
 
+        // إظهار إشعار نجاح
         showNotification('تم إرسال تقييمك بنجاح! شكراً لك', 'success');
 
+        // إغلاق القائمة بعد ثانيتين
         setTimeout(closeServerModal, 2500);
       } catch (err) {
         console.error('Error:', err);
@@ -1882,37 +1673,42 @@
       }
     }
 
-    // جلب التقييمات من Supabase
-    async function fetchReviews() {
-      try {
-        const { data, error } = await supabase
-          .from('reviews')
-          .select('server, text, created_at, server_type, image_url')
-          .order('created_at', { ascending: false });
-        
-        if (error) {
-          console.error('Error fetching reviews:', error);
-          showNotification('حدث خطأ في تحميل التقييمات', 'error');
-          return;
-        }
-        
-        if (data && data.length > 0) {
-          reviews = data.map(review => ({
-            server: review.server,
-            text: review.text,
-            date: review.created_at.split('T')[0],
-            image_url: review.image_url
-          }));
-          
-          displayReviews();
-        }
-      } catch (err) {
-        console.error('Error:', err);
-        showNotification('حدث خطأ في تحميل التقييمات', 'error');
-      }
+// جلب التقييمات من Supabase
+async function fetchReviews() {
+  try {
+    console.log('جلب التقييمات من Supabase...');
+    
+    const { data, error } = await supabase
+      .from('reviews')
+      .select('server, text, created_at, server_type')
+      .order('created_at', { ascending: false });
+      
+    console.log('نتيجة الجلب:', { data, error });
+    
+    if (error) {
+      console.error('Error fetching reviews:', error);
+      showNotification('حدث خطأ في تحميل التقييمات', 'error');
+      return;
     }
+    
+    if (data && data.length > 0) {
+      reviews = data.map(review => ({
+        server: review.server,
+        text: review.text,
+        date: review.created_at.split('T')[0]
+      }));
+      
+      displayReviews();
+    } else {
+      console.log('لا توجد تقييمات بعد');
+    }
+  } catch (err) {
+    console.error('Error:', err);
+    showNotification('حدث خطأ في تحميل التقييمات', 'error');
+  }
+}
 
-    // عرض التقييمات (بدون لايك، مع صورة)
+    // عرض التقييمات المحسن
     function displayReviews() {
       const container = document.getElementById('reviews-container');
       container.innerHTML = '';
@@ -1933,11 +1729,6 @@
         reviewCard.className = 'review-card';
         reviewCard.style.animationDelay = `${index * 0.1}s`;
         
-        let imageHTML = '';
-        if (review.image_url) {
-          imageHTML = `<img src="${review.image_url}" alt="صورة التقييم" class="review-image">`;
-        }
-        
         reviewCard.innerHTML = `
           <div class="review-header">
             <span class="review-server">
@@ -1953,14 +1744,13 @@
             <i class="fas fa-quote-right" style="float: left; margin: 0 0 0 10px; opacity: 0.3; font-size: 1.5em;"></i>
             ${review.text}
           </p>
-          ${imageHTML}
         `;
         
         container.appendChild(reviewCard);
       });
     }
 
-    // تنسيق التاريخ
+    // تنسيق التاريخ محسن
     function formatDate(dateString) {
       const date = new Date(dateString);
       const now = new Date();
@@ -2044,6 +1834,7 @@
       const cards = document.querySelectorAll('.btn-card, .feature-item');
       
       cards.forEach(card => {
+        // تأثير التحريك ثلاثي الأبعاد
         card.addEventListener('mousemove', function(e) {
           const rect = this.getBoundingClientRect();
           const x = e.clientX - rect.left;
@@ -2062,6 +1853,7 @@
           this.style.transform = '';
         });
         
+        // تأثير النقر المتطور
         card.addEventListener('mousedown', function() {
           this.style.transform += ' scale(0.98)';
         });
@@ -2078,6 +1870,7 @@
       
       interactiveElements.forEach(element => {
         element.addEventListener('click', function(e) {
+          // تأثير الموجة عند النقر
           const ripple = document.createElement('div');
           const rect = this.getBoundingClientRect();
           const size = 60;
@@ -2136,8 +1929,10 @@
 
     // تأثير النقر العام المحسن
     document.addEventListener('click', (e) => {
+      // تجنب إنشاء التأثير داخل القائمة المنبثقة
       if (e.target.closest('.server-modal') || e.target.closest('button') || e.target.closest('a')) return;
       
+      // إنشاء تأثير الموجة المطور
       const ripple = document.createElement('div');
       const size = Math.random() * 100 + 50;
       
@@ -2161,6 +1956,41 @@
       setTimeout(() => ripple.remove(), 1000);
     });
 
+    // إضافة الأنيميشنز في CSS
+    const additionalStyles = document.createElement('style');
+    additionalStyles.textContent = `
+      @keyframes slideInRight {
+        0% { transform: translateX(100%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+      }
+      
+      @keyframes slideOutRight {
+        0% { transform: translateX(0); opacity: 1; }
+        100% { transform: translateX(100%); opacity: 0; }
+      }
+      
+      @keyframes rippleEffect {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(4); opacity: 0; }
+      }
+      
+      @keyframes rippleExpand {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(3); opacity: 0; }
+      }
+      
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+      
+      .notification {
+        animation: slideInRight 0.5s ease-out;
+      }
+    `;
+    document.head.appendChild(additionalStyles);
+
     // تحسين الأداء مع Intersection Observer
     const observerOptions = {
       threshold: 0.1,
@@ -2182,177 +2012,37 @@
       elements.forEach(el => observer.observe(el));
     }
 
-    // لعبة الثعبان
-    function initSnakeGame() {
-      const canvas = document.getElementById('snakeCanvas');
-      const context = canvas.getContext('2d');
-      canvas.width = 400;
-      canvas.height = 400;
-      
-      const grid = 16;
-      let count = 0;
-      let snake = {
-        x: 160,
-        y: 160,
-        dx: grid,
-        dy: 0,
-        cells: [],
-        maxCells: 4
-      };
-      let apple = {
-        x: 320,
-        y: 320
-      };
-      
-      function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-      }
-      
-      function loop() {
-        requestAnimationFrame(loop);
-        
-        if (++count < 4) return;
-        count = 0;
-        context.clearRect(0,0,canvas.width,canvas.height);
-        
-        snake.x += snake.dx;
-        snake.y += snake.dy;
-        
-        if (snake.x < 0) snake.x = canvas.width - grid;
-        else if (snake.x >= canvas.width) snake.x = 0;
-        
-        if (snake.y < 0) snake.y = canvas.height - grid;
-        else if (snake.y >= canvas.height) snake.y = 0;
-        
-        snake.cells.unshift({x: snake.x, y: snake.y});
-        
-        if (snake.cells.length > snake.maxCells) snake.cells.pop();
-        
-        context.fillStyle = 'red';
-        context.fillRect(apple.x, apple.y, grid-1, grid-1);
-        
-        context.fillStyle = 'green';
-        snake.cells.forEach(function(cell, index) {
-          context.fillRect(cell.x, cell.y, grid-1, grid-1);
-          
-          if (cell.x === apple.x && cell.y === apple.y) {
-            snake.maxCells++;
-            apple.x = getRandomInt(0, 25) * grid;
-            apple.y = getRandomInt(0, 25) * grid;
-          }
-          
-          for (let i = index + 1; i < snake.cells.length; i++) {
-            if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-              snake.x = 160;
-              snake.y = 160;
-              snake.cells = [];
-              snake.maxCells = 4;
-              snake.dx = grid;
-              snake.dy = 0;
-              apple.x = getRandomInt(0, 25) * grid;
-              apple.y = getRandomInt(0, 25) * grid;
-            }
-          }
-        });
-      }
-      
-      document.addEventListener('keydown', function(e) {
-        if (e.which === 37 && snake.dx === 0) {
-          snake.dx = -grid;
-          snake.dy = 0;
-        } else if (e.which === 38 && snake.dy === 0) {
-          snake.dy = -grid;
-          snake.dx = 0;
-        } else if (e.which === 39 && snake.dx === 0) {
-          snake.dx = grid;
-          snake.dy = 0;
-        } else if (e.which === 40 && snake.dy === 0) {
-          snake.dy = grid;
-          snake.dx = 0;
-        }
-      });
-      
-      requestAnimationFrame(loop);
-    }
-
-    // ألغاز
-    const riddles = [
-      { question: "ما هو الشيء المليء بالثقوب، ولكنه لا يزال يحتفظ بالماء؟", answer: "الإسفنجة" },
-      { question: "ما هو السؤال الذي لا يمكنك الإجابة عنه بنعم؟", answer: "هل أنت نائم" },
-      { question: "إنه يتبعك في جميع الأنحاء، ويحاكي كل حركة تتحركها، لكن لا يمكنك لمسه، فما هو؟", answer: "ظلك" },
-      { question: "عضو من أعضاء الجسم يوجد اللحم به من الخارج وبه شعر من الداخل؟", answer: "الأنف" },
-      { question: "لا يمتلك قلبًا لكنه ينبض بالحياة، ما هو؟", answer: "الساعة" }
-    ];
-
-    let currentRiddle = Math.floor(Math.random() * riddles.length);
-
-    function initRiddles() {
-      document.getElementById('riddleText').textContent = riddles[currentRiddle].question;
-    }
-
-    function checkRiddle() {
-      const answer = document.getElementById('riddleInput').value.trim();
-      const feedback = document.getElementById('riddleFeedback');
-      
-      if (answer === riddles[currentRiddle].answer) {
-        feedback.textContent = 'صحيح! 🎉';
-        feedback.style.color = 'var(--neon-green)';
-        setTimeout(() => {
-          currentRiddle = Math.floor(Math.random() * riddles.length);
-          document.getElementById('riddleText').textContent = riddles[currentRiddle].question;
-          document.getElementById('riddleInput').value = '';
-          feedback.textContent = '';
-        }, 2000);
-      } else {
-        feedback.textContent = 'خطأ، حاول مرة أخرى!';
-        feedback.style.color = 'var(--neon-pink)';
-      }
-    }
-
-    // تشغيل الموسيقى (افتراضي off)
-    let isPlaying = false;
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBtn = document.querySelector('.music-btn i');
-    
-    function toggleMusic() {
-      if (isPlaying) {
-        bgMusic.pause();
-        musicBtn.classList.replace('fa-pause', 'fa-play');
-      } else {
-        bgMusic.play();
-        musicBtn.classList.replace('fa-play', 'fa-pause');
-      }
-      isPlaying = !isPlaying;
-    }
-
     // تشغيل جميع التأثيرات عند تحميل الصفحة
     document.addEventListener('DOMContentLoaded', () => {
       createParticles();
       addAdvancedCardEffects();
       addSoundEffects();
       addInteractiveLighting();
-      fetchReviews();
+      fetchReviews(); // جلب التقييمات من Supabase
       observeElements();
-      initSnakeGame();
-      initRiddles();
       
+      // تحسين الأداء للأجهزة المحمولة
       if (window.innerWidth <= 768) {
         document.body.classList.add('mobile-optimized');
       }
       
+      // رسالة ترحيب
       setTimeout(() => {
         showNotification('مرحباً بك في سيرفرات صاعقة! 🌟', 'success');
       }, 2000);
     });
     
+    // مراقبة التمرير للتأثيرات
     let scrollTimeout;
     window.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(handleScrollReveal, 50);
     });
     
+    // تشغيل تأثيرات التمرير عند التحميل
     handleScrollReveal();
 
+    // تفعيل الوضع المظلم/الفاتح (اختياري)
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (prefersDarkScheme.matches) {
       document.body.classList.add('dark-mode-enhanced');
